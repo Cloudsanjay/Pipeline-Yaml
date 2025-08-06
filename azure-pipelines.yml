@@ -1,6 +1,7 @@
 trigger: none
 
-pool: 1stAgent
+pool:
+  name: 1stAgent
 
 
 steps:
