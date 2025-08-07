@@ -22,5 +22,11 @@ steps:
 - task: TerraformTask@5
   inputs:
     provider: 'azurerm'
+    command: 'plan'
+    environmentServiceNameAzureRM: 'yamlserviceConnection'
+    environmentAzureRmOverrideSubscriptionID: '9a19641f-a0da-455d-9b90-51dc0d0cdfee'
+- task: TerraformTask@5
+  inputs:
+    provider: 'azurerm'
     command: 'apply'
     environmentServiceNameAzureRM: 'yamlserviceConnection'
