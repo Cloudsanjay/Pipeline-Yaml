@@ -2,7 +2,7 @@ trigger:
   - main
 
 pool :
- name: abcd agent
+  name: abcd agent
 
 jobs:
   - job: 
