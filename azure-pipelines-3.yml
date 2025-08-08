@@ -1,0 +1,48 @@
+trigger:
+ branches:
+    exclude:
+      - main
+
+pool:
+  name: abcd
+
+stages:
+  - stage: 
+    jobs:
+      - job: 
+        steps:
+          - task: TerraformTask@5
+            displayName: "Terraform Init"
+            inputs:
+              provider: 'azurerm'
+              command: 'init'
+              backendServiceArm: 'SR2'
+              backendAzureRmStorageAccountName: 'sanjaysingraur'
+              backendAzureRmContainerName: 'sanjaycontainer'
+              backendAzureRmKey: 'sanjay.tfstate'
+          - task: TerraformTask@5
+            displayName: "Terraform validate"
+            inputs:
+              provider: 'azurerm'
+              command: 'validate'
+  - stage: 
+    jobs:
+      - job: yeterraforminithai
+        displayName: "terraform init and terraform plan"
+        steps:
+          - task: TerraformTask@5
+            displayName: "Terraform Init"
+            inputs:
+              provider: 'azurerm'
+              command: 'init'
+              backendServiceArm: 'SR2'
+              backendAzureRmStorageAccountName: 'sanjaysingraur'
+              backendAzureRmContainerName: 'sanjaycontainer'
+              backendAzureRmKey: 'sanjay.tfstate'
+
+          - task: TerraformTask@5
+            displayName: "Terraform plan"
+            inputs:
+              provider: 'azurerm'
+              command: 'plan'
+              environmentServiceNameAzureRM: 'SR2'
